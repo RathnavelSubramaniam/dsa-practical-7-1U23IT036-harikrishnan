@@ -1,7 +1,7 @@
 import java.util.Scanner;
 public class LinkedList {
     class Node {
-        int data;
+int data;
         Node next;
 
 public Node(int data) {
@@ -30,11 +30,11 @@ public static void main(String[] args) {
         LinkedList list = new LinkedList();
         Scanner sc = new Scanner(System.in);
         int pos=0;
-        int data,data1;
+int data,data1;
         System.out.println("ENTER INTEGERS TO CREATE NODES (ENTER A NON-INTEGER TO EXIT):");
         while (sc.hasNext())
         {
-         
+
             if(sc.hasNextInt())
             {
             data = sc.nextInt();
@@ -57,6 +57,8 @@ public static void main(String[] args) {
             list.insertMiddle(data1,pos);
             System.out.println("LINKED LIST AFTER INSERTING");
             list.displayList();
+System.exit(0);
+
             }
             else
             {
@@ -72,15 +74,33 @@ public static void main(String[] args) {
            }
         }
     }
-public void insertMiddle() 
+public void insertMiddle(int data,int pos) 
     {    
-//TYPE YOUR CODE HERE
+        //Create a new node    
+        Node newNode = new Node(data);    
+       //temporary node points to head node
+        Node temp=head;
+        if(pos==1)
+        {
+newNode.next=temp;
+        head=newNode;
+        }
+        else
+        {
+        for(int i=1;i<(pos-1);i++ ) 
+        {    
+            temp = temp.next;    
+        }    
+newNode.next=temp.next;
+temp.next=newNode;
+        }
+System.out.println("Element Inserted");
     }
 
 public void displayList() {
         Node current = head;
         while (current != null) {
-        System.out.print(current.data + " -> ");
+System.out.print(current.data + " -> ");
         current = current.next;
         }
 System.out.println("null");
